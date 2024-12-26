@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the Song!</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Rhythmix - Guess the Song!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,36 +18,32 @@
     <div class="container">
         <h1 class="title">Rhythmix</h1>
         <h2>🎶 Guess the Song! 🎬</h2>
-        <p>Choose your category and let our system guess the song based on your input!</p>
+        <p>Enter song lyrics, artist name, or any details to find your song!</p>
 
-        <div class="button-group">
-            <button onclick="selectCategory('lyrics')">Song Lyrics</button>
-            <button onclick="selectCategory('actor')">Actor/Actress</button>
-            <button onclick="selectCategory('scene')">Scene</button>
+        <div class="search-container">
+            <form id="inputForm">
+                <input type="text" id="userInput" placeholder="Enter song details..." required>
+                <button type="submit">Search Song</button>
+            </form>
         </div>
 
-        <form id="inputForm">
-            <input type="text" id="userInput" placeholder="Enter your input here" required>
-            <button type="submit">Guess the Song</button>
-        </form>
+        <div id="output" class="output"></div>
 
-        <div id="output" class="output">
-            <!-- Result will be displayed here -->
-        </div>
-
-        <div id="songDetails" class="song-details" style="display:none;">
+        <div id="songDetails" class="song-details">
             <h3>Song Details</h3>
-            <img id="songImage" src="" alt="Song Image" />
-            <p id="songTitle"></p>
-            <p id="songArtist"></p>
-            <p id="songAlbum"></p>
-            <p id="songReleaseDate"></p>
-            <p id="songGenre"></p> <!-- New field for Genre -->
-            <p id="songPopularity"></p> <!-- New field for Popularity -->
-            <a id="songLink" href="" target="_blank">View on Genius</a>
+            <div class="song-content">
+                <img id="songImage" src="" alt="Song Image" />
+                <div class="song-info">
+                    <p id="songTitle"></p>
+                    <p id="songArtist"></p>
+                    <p id="songAlbum"></p>
+                    <p id="songReleaseDate"></p>
+                    <a id="songLink" href="" target="_blank">View on Genius</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="../static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
